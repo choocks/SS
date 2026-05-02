@@ -1,0 +1,45 @@
+# Generated leads (never commit)
+prospects.csv
+outreach/sent_log.csv
+
+# Secrets / credentials
+.env
+.env.local
+*.pem
+*.key
+gmail_credentials.json
+gmail_token.json
+service_account.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node / Astro
+node_modules/
+dist/
+.astro/
+.output/
+.vercel/
+.netlify/
+.cache/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Playwright artifacts
+playwright-report/
+test-results/
+.playwright/
