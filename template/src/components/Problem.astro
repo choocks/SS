@@ -1,0 +1,46 @@
+---
+import { client } from '../config/client.ts';
+---
+
+<section aria-label="What we do differently" class="bg-white">
+  <div class="container-x py-16 sm:py-20">
+    <div class="max-w-3xl">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+        {client.problem.headline}
+      </h2>
+      {client.problem.subhead && (
+        <p class="mt-4 text-lg text-gray-600">{client.problem.subhead}</p>
+      )}
+    </div>
+
+    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {client.problem.points.map((p) => (
+        <article>
+          <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
+            <svg
+              aria-hidden="true"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-gray-900">{p.title}</h3>
+          <p class="mt-2 text-gray-600">{p.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tailwind doesn't support /opacity on CSS-var colors out of the box. */
+  .bg-brand\/10 {
+    background-color: color-mix(in srgb, var(--color-brand) 10%, white);
+  }
+</style>

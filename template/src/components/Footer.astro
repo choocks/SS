@@ -1,0 +1,43 @@
+---
+import { client } from '../config/client.ts';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-gray-200 bg-white">
+  <div class="container-x py-10 text-sm text-gray-500">
+    <div class="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+      <div>
+        <p class="font-semibold text-gray-900">{client.brand.name}</p>
+        <p>{client.contact.addressLine}</p>
+        {client.contact.hours && <p>{client.contact.hours}</p>}
+      </div>
+      <div class="text-left sm:text-right space-y-1">
+        <p>
+          <a
+            href={`tel:${client.contact.phoneTel}`}
+            class="font-medium text-gray-900 hover:text-brand plausible-event-name=phone_click"
+          >
+            {client.contact.phoneDisplay}
+          </a>
+        </p>
+        <p>
+          <a href={`mailto:${client.contact.email}`} class="hover:text-brand">
+            {client.contact.email}
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-xs text-gray-400">
+      <p>© {year} {client.footer.legalName}. {client.footer.license || ''}</p>
+      <ul class="flex gap-4">
+        {client.footer.privacyUrl && (
+          <li><a href={client.footer.privacyUrl} class="hover:text-gray-600">Privacy</a></li>
+        )}
+        {client.footer.termsUrl && (
+          <li><a href={client.footer.termsUrl} class="hover:text-gray-600">Terms</a></li>
+        )}
+      </ul>
+    </div>
+  </div>
+</footer>

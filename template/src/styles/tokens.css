@@ -1,0 +1,89 @@
+/* Design tokens. The brand color values are overridden at runtime by Layout.astro
+   from src/config/client.ts — the values here are sane fallbacks only. */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand: #0F766E;
+    --color-brand-dark: #115E59;
+    --color-brand-fg: #FFFFFF;
+
+    --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', sans-serif;
+
+    --radius: 0.5rem;
+    --radius-lg: 1rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: #111827;
+    background: #ffffff;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+  }
+
+  /* Reserve room for the sticky mobile CTA so it never covers content. */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: 4.5rem;
+    }
+  }
+
+  /* Reduced motion: kill smooth scroll for users who ask for it. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg
+           font-semibold tracking-tight transition-colors
+           focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-offset-2 focus-visible:ring-brand;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-brand-fg hover:bg-brand-dark
+           px-6 py-3 text-base shadow-sm;
+  }
+
+  .btn-primary-lg {
+    @apply btn bg-brand text-brand-fg hover:bg-brand-dark
+           px-8 py-4 text-lg shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-gray-900 border border-gray-200 hover:bg-gray-50
+           px-6 py-3 text-base;
+  }
+
+  .container-x {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-widest
+           text-brand;
+  }
+}

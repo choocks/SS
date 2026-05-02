@@ -1,0 +1,36 @@
+---
+import { client } from '../config/client.ts';
+---
+
+<section aria-label="Testimonials" class="bg-white">
+  <div class="container-x py-16 sm:py-20">
+    {client.testimonials.headline && (
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+        {client.testimonials.headline}
+      </h2>
+    )}
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-3">
+      {client.testimonials.items.map((t) => (
+        <figure class="rounded-2xl bg-gray-50 p-6 ring-1 ring-gray-100">
+          <div class="flex gap-0.5 text-brand" aria-hidden="true">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.16c.969 0 1.371 1.24.588 1.81l-3.366 2.446a1 1 0 00-.364 1.118l1.287 3.957c.3.92-.755 1.688-1.54 1.118l-3.366-2.446a1 1 0 00-1.176 0l-3.366 2.446c-.784.57-1.838-.197-1.539-1.118l1.286-3.957a1 1 0 00-.363-1.118L2.07 9.384c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.95-.69l1.286-3.957z"
+                />
+              </svg>
+            ))}
+          </div>
+          <blockquote class="mt-4 text-gray-800 leading-relaxed">
+            "{t.quote}"
+          </blockquote>
+          <figcaption class="mt-4 text-sm">
+            <span class="font-semibold text-gray-900">{t.name}</span>
+            {t.result && <span class="text-gray-500"> · {t.result}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

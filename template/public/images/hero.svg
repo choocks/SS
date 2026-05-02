@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Placeholder hero image — replace with a real photo of the business.">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E0F2F1"/>
+      <stop offset="100%" stop-color="#B2DFDB"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <g fill="#0F766E" opacity="0.85" font-family="system-ui, -apple-system, Segoe UI, sans-serif" text-anchor="middle">
+    <text x="600" y="440" font-size="60" font-weight="700">Replace with a real photo</text>
+    <text x="600" y="500" font-size="28" font-weight="500" opacity="0.7">Drop into /public/images/ and update client.ts</text>
+  </g>
+</svg>

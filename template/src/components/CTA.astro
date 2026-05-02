@@ -1,0 +1,48 @@
+---
+import { client } from '../config/client.ts';
+import LeadForm from './LeadForm.astro';
+---
+
+<section aria-label="Get started" class="bg-brand text-brand-fg">
+  <div class="container-x py-16 sm:py-20 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
+      {client.finalCta.headline}
+    </h2>
+    {client.finalCta.subhead && (
+      <p class="mt-4 text-lg/relaxed opacity-90 max-w-2xl mx-auto">
+        {client.finalCta.subhead}
+      </p>
+    )}
+
+    <div class="mt-8 inline-block w-full">
+      <LeadForm submitLabel={client.finalCta.ctaLabel} />
+    </div>
+
+    <p class="mt-6 text-sm opacity-80">
+      Or call
+      <a
+        href={`tel:${client.contact.phoneTel}`}
+        class="font-semibold underline plausible-event-name=phone_click"
+      >
+        {client.contact.phoneDisplay}
+      </a>
+      · {client.contact.hours}
+    </p>
+
+    <ul class="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs opacity-80">
+      {client.trustMarkers.map((m) => (
+        <li>· {m}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  /* Lead form copy on dark background needs to be readable. */
+  section[aria-label='Get started'] :global(input) {
+    color: #111827;
+  }
+  section[aria-label='Get started'] :global(p.text-xs) {
+    color: rgba(255, 255, 255, 0.85);
+  }
+</style>

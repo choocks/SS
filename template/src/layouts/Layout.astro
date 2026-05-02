@@ -1,0 +1,52 @@
+---
+import { client } from '../config/client.ts';
+import '../styles/tokens.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = client.meta.title, description = client.meta.description } = Astro.props;
+
+// Inject per-client brand color into the runtime CSS custom properties so
+// changing client.ts is enough to re-skin the entire page without touching
+// Tailwind config.
+const brandStyle = `:root{--color-brand:${client.brand.primaryColor};--color-brand-dark:${client.brand.primaryColorDark};--color-brand-fg:${client.brand.foregroundOnBrand};--font-heading:${client.brand.fontHeading};--font-body:${client.brand.fontBody};}`;
+
+const plausibleDomain = client.analytics.plausibleDomain;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={client.brand.primaryColor} />
+    <link rel="icon" type="image/svg+xml" href={client.meta.favicon} />
+    <link rel="canonical" href={`https://${client.meta.domain}/`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`https://${client.meta.domain}/`} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <title>{title}</title>
+
+    <style is:inline set:html={brandStyle}></style>
+
+    {plausibleDomain && (
+      <script
+        is:inline
+        defer
+        data-domain={plausibleDomain}
+        src="https://plausible.io/js/script.tagged-events.js"
+      ></script>
+    )}
+  </head>
+  <body class="antialiased text-gray-900 bg-white">
+    <slot />
+  </body>
+</html>
