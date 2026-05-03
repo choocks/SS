@@ -1,0 +1,9 @@
+Subject: quick note on your {{vertical}} ads
+
+Hey {{owner_first_name}},
+
+Saw your {{ad_platform}} ad for {{business_name}} is sending traffic to your homepage. Vs. a dedicated landing page that mirrors the ad, that's typically a 2–3x conversion gap — every section they have to scroll past is a chance to bounce.
+
+Want a free 90-second Loom showing exactly where you're losing bookings? No pitch, just the breakdown.
+
+— Anthony
